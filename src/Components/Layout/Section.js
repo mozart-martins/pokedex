@@ -11,9 +11,15 @@ const Section = () => {
 
     return (
         <section className="container-fluid bg-danger text-white" style={sectionStyle}>
-            {pokemonList && pokemonList.map(pokemon => (
-                <Pokemon name={pokemon.name} />
-            ))}
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+                {pokemonList && pokemonList.results.map(pokemon => (
+                    <Pokemon
+                        key={pokemon.name.toString()}
+                        name={pokemon.name}
+                        address={pokemon.url}
+                    />)
+                )}
+            </div>
         </section>
     )
 };
