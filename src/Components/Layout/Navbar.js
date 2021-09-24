@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PokemonContext } from "../Context/Context";
 
 const Navbar = () => {
@@ -6,8 +6,12 @@ const Navbar = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    getPokemonList(e.target.search.value)
+    getPokemonList(e.target.search.value.toLowerCase())
   }
+
+  useEffect(() => {
+    getPokemonList()
+  }, [pokemonList])
 
   return (
     <nav className="navbar navbar-dark bg-dark">
