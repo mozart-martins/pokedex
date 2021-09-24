@@ -1,27 +1,24 @@
-import axios from 'axios'
 
 const pokemonStyle = {
     "width": "18rem"
 }
 
-// Taking pokemon photo
-const getPokemonPhoto = async (address) => {
-    // front_default
-    if(address) {
-        const apiResult = await axios.get(address)
-        const photo = apiResult.data.sprites.front_default
-        return photo;
-    }
-}
-
 const Pokemon = props => {
-    const photo = getPokemonPhoto(props.address)
+
+    const getPhoto = () => {
+        var addressSplited = props.address.split("/")
+        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${addressSplited[6]}.png`
+    }
+
     return (
         <div className="col">
-            <div className="card bg-danger text-white my-3 justify-content-center" style={pokemonStyle}>
-                <img src={getPokemonPhoto(props.address)} alt={props.name} />
-                <div className="card-body">
-                    <div className="card-title">{props.name}</div>
+            <div className="card border-dark bg-danger text-white my-3 justify-content-center" style={pokemonStyle}>
+                <img className="card-img-top"
+                    src={getPhoto()} 
+                    alt={props.name.charAt(0).toUpperCase() + props.name.slice(1)} 
+                />
+                <div className="card-body bg-dark">
+                    <div className="card-title h3">{props.name.charAt(0).toUpperCase() + props.name.slice(1)}</div>
                     <a href={props.address} className="card-link">Profile</a>
                 </div>
             </div>
