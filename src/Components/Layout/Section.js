@@ -3,7 +3,7 @@ import { PokemonContext } from "../Context/Context"
 import Pokemon from '../Pokemon/Pokemon'
 
 const sectionStyle = {
-    height: "100vh"
+    height: "calc(100vh + 100%)",
 }
 
 const Section = () => {
