@@ -2,16 +2,16 @@ import { useContext, useEffect } from "react";
 import { PokemonContext } from "../Context/Context";
 
 const Navbar = () => {
-  const [pokemonList, getPokemonList] = useContext(PokemonContext);
+  const [pokemonList, getPokemonList, pokemon, getPokemon] = useContext(PokemonContext);
 
   const handleSubmit = e => {
     e.preventDefault()
-    getPokemonList(e.target.search.value.toLowerCase())
+    getPokemon(e.target.search.value.toLowerCase())
   }
 
   useEffect(() => {
     getPokemonList()
-  }, [pokemonList])
+  }, [pokemon])
 
   return (
     <nav className="navbar navbar-dark bg-dark">

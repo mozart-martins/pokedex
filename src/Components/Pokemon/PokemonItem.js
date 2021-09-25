@@ -3,7 +3,7 @@ const pokemonStyle = {
     "width": "18rem"
 }
 
-const Pokemon = props => {
+const PokemonItem = props => {
 
     const getPhoto = () => {
         var addressSplited = props.address.split("/")
@@ -26,4 +26,4 @@ const Pokemon = props => {
     )
 }
 
-export default Pokemon
+export default PokemonItem
