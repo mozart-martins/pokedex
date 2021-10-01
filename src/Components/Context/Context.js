@@ -9,13 +9,15 @@ export const PokemonProvider = (props) => {
 
   // Getting a pokemon list
   const getPokemonList = async () => {
+    console.log("getPokemonList method called")
     const apiResult = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20")
     setPokemonList(apiResult.data)
   }
 
   // Getting a especific pokemon
   const getPokemon = async value => {
-    if(value && value.length > 0) {
+    console.log("getPokemon method called")
+    if(value && parseInt(value) > 0) {
       const apiResult = await axios.get(`https://pokeapi.co/api/v2/pokemon/${value}`)
       setPokemon(apiResult)
     }
