@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { PokemonContext } from "../Context/Context";
 
 const Navbar = () => {
@@ -9,13 +10,14 @@ const Navbar = () => {
     getPokemon(e.target.search.value.toLowerCase())
   }
 
-  useEffect(() => {
-    getPokemonList()
-  }, [pokemon])
-
   return (
     <nav className="navbar navbar-dark bg-dark">
       <h1 className="navbar-brand mb-0 px-3 h1">Pokedex</h1>
+      <ul className="navbar-nav me-auto h5">
+        <li className="nav-item">
+          <Link exact to="/" className="nav-link">Home</Link>
+        </li>
+      </ul>
       <form onSubmit={handleSubmit} className="d-flex">
         <input
           name="search"
