@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { PokemonContext } from "../Context/Context"
 import { useParams } from 'react-router-dom'
 
+
 const PokemonItemDetail = props => {
     const [pokemonList, getPokemonList, pokemon, getPokemon] = useContext(PokemonContext)
 
@@ -10,12 +11,6 @@ const PokemonItemDetail = props => {
     useEffect(() => {
         getPokemon(id)
     }, [id])
-
-    // return (
-    //     <div>
-    //         <h1>Teste {id}</h1>
-    //     </div>
-    // )
 
     // Getting pokemon photograph
     const getPhoto = () => {
@@ -53,13 +48,32 @@ const PokemonItemDetail = props => {
         return moves
     }
 
-    // console.log("hp", pokemon.data.stats[0].base_stat)
-    // console.log("attack", pokemon.data.stats[1].base_stat)
-    // console.log("defense", pokemon.data.stats[2].base_stat)
-    // console.log("especial-attack", pokemon.data.stats[3].base_stat)
-    // console.log("especial-defense", pokemon.data.stats[4].base_stat)
-    // console.log("speed", pokemon.data.stats[5].base_stat)
-    if(pokemon)
+    if(pokemon) {
+        const hp = pokemon.data.stats[0].base_stat
+        const hpProgressStyle = {
+            width: hp + "%",
+        }
+        const attack = pokemon.data.stats[1].base_stat
+        const attackProgressStyle = {
+            width: attack + "%",
+        }
+        const defense = pokemon.data.stats[2].base_stat
+        const defenseProgressStyle = {
+            width: defense + "%",
+        }
+        const especialAttack = pokemon.data.stats[3].base_stat
+        const especialAttackProgressStyle = {
+            width: especialAttack + "%",
+        }
+        const especialDefense = pokemon.data.stats[4].base_stat
+        const especialDefenseProgressStyle = {
+            width: especialDefense + "%",
+        }
+        const speed = pokemon.data.stats[5].base_stat
+        const speedProgressStyle = {
+            width: speed + "%",
+        }
+
         return (
             <div className="bg-danger">
                 <div className="row justify-content-center">
@@ -84,12 +98,32 @@ const PokemonItemDetail = props => {
                                 <div className="mb-5">
                                     <p className="mb-0">HP</p>
                                     <div className="progress mb-3">
-                                        <div style={"width: " + pokemon.data.stats[0].base_stat + "%"} role="progressbar" aria-valuenow={pokemon.data.stats[0].base_stat} aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div className="progress-bar bg-dark" style={hpProgressStyle} role="progressbar" aria-valuenow={hp} aria-valuemin="0" aria-valuemax="100">{hp} %</div>
+                                    </div>
+                                    <p className="mb-0">Attack</p>
+                                    <div className="progress mb-3">
+                                        <div className="progress-bar bg-dark" style={attackProgressStyle} role="progressbar" aria-valuenow={attack} aria-valuemin="0" aria-valuemax="100">{attack} %</div>
+                                    </div>
+                                    <p className="mb-0">Defense</p>
+                                    <div className="progress mb-3">
+                                        <div className="progress-bar bg-dark" style={defenseProgressStyle} role="progressbar" aria-valuenow={defense} aria-valuemin="0" aria-valuemax="100">{defense} %</div>
+                                    </div>
+                                    <p className="mb-0">Especial Attack</p>
+                                    <div className="progress mb-3">
+                                        <div className="progress-bar bg-dark" style={especialAttackProgressStyle} role="progressbar" aria-valuenow={especialAttack} aria-valuemin="0" aria-valuemax="100">{especialAttack} %</div>
+                                    </div>
+                                    <p className="mb-0">Especial Defense</p>
+                                    <div className="progress mb-3">
+                                        <div className="progress-bar bg-dark" style={especialDefenseProgressStyle} role="progressbar" aria-valuenow={especialDefense} aria-valuemin="0" aria-valuemax="100">{especialDefense} %</div>
+                                    </div>
+                                    <p className="mb-0">Speed</p>
+                                    <div className="progress mb-3">
+                                        <div className="progress-bar bg-dark" style={speedProgressStyle} role="progressbar" aria-valuenow={speed} aria-valuemin="0" aria-valuemax="100">{speed} %</div>
                                     </div>
                                 </div>
                                 <h5 className="card-title">
                                     <span className="badge h3 bg-dark text-danger">
-                                        {/* <strong>{pokemon.data.type} type</strong> */}
+                                        <strong>{pokemon.data.types[0].type.name} type</strong>
                                     </span>
                                 </h5>
                                 <ul>
@@ -103,6 +137,12 @@ const PokemonItemDetail = props => {
                             </div>
                     </div>
                 </div>
+            </div>
+        )
+    } else
+        return (
+            <div className="bg-danger text-dark">
+                <h1>Pokemon não encontrado...</h1>
             </div>
         )
 }

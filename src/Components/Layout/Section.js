@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react"
 import { PokemonContext } from "../Context/Context"
 import PokemonItem from '../Pokemon/PokemonItem'
-import PokemonItemDetail from "../Pokemon/PokemonItemDetail"
 
 const sectionStyle = {
     height: "calc(100vh + 100%)",
@@ -12,7 +11,7 @@ const Section = () => {
 
     useEffect(() => {
         getPokemonList()
-    }, [pokemonList])
+    }, [false])
 
     return (
         <section className="container-fluid bg-danger text-white" style={sectionStyle}>
