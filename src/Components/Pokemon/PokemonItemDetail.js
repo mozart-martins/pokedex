@@ -10,11 +10,12 @@ const PokemonItemDetail = props => {
     
     useEffect(() => {
         getPokemon(id)
+        console.log(pokemon)
     }, [id])
 
     // Getting pokemon photograph
     const getPhoto = () => {
-        const photo = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+        const photo = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.data.id}.png`
         return photo
     }
     

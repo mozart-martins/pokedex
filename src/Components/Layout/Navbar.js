@@ -1,13 +1,13 @@
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { PokemonContext } from "../Context/Context";
+import { Link } from "react-router-dom"
+import { useHistory } from "react-router"
 
 const Navbar = () => {
-  const [pokemonList, getPokemonList, pokemon, getPokemon] = useContext(PokemonContext);
+  const history = useHistory()
 
   const handleSubmit = e => {
     e.preventDefault()
-    getPokemon(e.target.search.value.toLowerCase())
+    const value = e.target.search.value.toLowerCase()
+    history.push(`/detail/${value}`)
   }
 
   return (
