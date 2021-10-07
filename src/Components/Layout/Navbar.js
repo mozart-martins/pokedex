@@ -15,7 +15,7 @@ const Navbar = () => {
       <h1 className="navbar-brand mb-0 px-3 h1">Pokedex</h1>
       <ul className="navbar-nav me-auto h5">
         <li className="nav-item">
-          <Link exact to="/" className="nav-link">Home</Link>
+          <Link exact to="/page/0" className="nav-link">Home</Link>
         </li>
       </ul>
       <form onSubmit={handleSubmit} className="d-flex">

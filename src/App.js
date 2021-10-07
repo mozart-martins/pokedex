@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Section} />
+          <Route path="/page/:page" component={Section} />
           <Route path="/detail/:id" component={PokemonItemDetail} />
         </Switch>
       </BrowserRouter>
