@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react"
 import { PokemonContext } from "../Context/Context"
 import { useParams } from 'react-router-dom'
+import Breadcrumb from "../Layout/Breadcrumb"
+import Spinner from "../Layout/Spinner"
 
 
 const PokemonItemDetail = props => {
@@ -10,7 +12,6 @@ const PokemonItemDetail = props => {
     
     useEffect(() => {
         getPokemon(id)
-        console.log(pokemon)
     }, [id])
 
     // Getting pokemon photograph
@@ -77,8 +78,9 @@ const PokemonItemDetail = props => {
 
         return (
             <div className="bg-danger">
+                <Breadcrumb location="profile"/>
                 <div className="row justify-content-center">
-                    <div className="card col-4 border-dark bg-danger m-3 p-0">
+                    <div className="card col-4 border-dark bg-danger mb-5 p-0">
                             <div className="card-header bg-dark text-white">
                                 <h3>
                                     {pokemon.data.name.charAt(0).toUpperCase() + pokemon.data.name.slice(1)}
@@ -142,9 +144,7 @@ const PokemonItemDetail = props => {
         )
     } else
         return (
-            <div className="bg-danger text-dark">
-                <h1>Pokemon não encontrado...</h1>
-            </div>
+            <Spinner/>
         )
 }
 

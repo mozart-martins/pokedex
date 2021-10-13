@@ -7,8 +7,8 @@ const Pagination = props => {
     const [pokemonList, getPokemonList, pokemon, getPokemon, page, hasMorePage] = useContext(PokemonContext)
 
     return (
-        <nav aria-label="Paginação dos Pokemons">
-            <ul className="pagination bg-danger text-dark justify-content-center pt-4">
+        <nav className="m-0" aria-label="Paginação dos Pokemons">
+            <ul className="pagination justify-content-center">
                 {(parseInt(props.page) - 2 >= 0) && <li className="page-item">
                     <Link to={`/page/${parseInt(props.page) - 2}`} className="page-link">
                         <span aria-hidden="true">&laquo;</span>

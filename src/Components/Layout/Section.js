@@ -2,11 +2,8 @@ import { useContext, useEffect } from "react"
 import { PokemonContext } from "../Context/Context"
 import PokemonItem from '../Pokemon/PokemonItem'
 import Pagination from "./Pagination"
+import Breadcrumb from './Breadcrumb'
 import { useParams } from "react-router"
-
-const sectionStyle = {
-    height: "calc(100vh + 100%)",
-}
 
 const Section = () => {
     const [pokemonList, getPokemonList, pokemon] = useContext(PokemonContext)
@@ -17,7 +14,8 @@ const Section = () => {
     }, [page])
 
     return (
-        <section className="container-fluid bg-danger text-white" style={sectionStyle}>
+        <section className="container-fluid bg-danger text-white">
+            <Breadcrumb location="home" />
             <Pagination page={page} />
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                 {pokemonList && pokemonList.results.map(pokemon => (
@@ -28,7 +26,6 @@ const Section = () => {
                     />)
                 )}
             </div>
-            <Pagination page={page} />
         </section>
     )
 };
